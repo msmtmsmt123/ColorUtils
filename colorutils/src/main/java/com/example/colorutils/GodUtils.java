@@ -16,7 +16,11 @@ import android.widget.Toast;
 
 public class GodUtils {
 
-    //判断是否为ARGB格式的十六进制颜色，例如：FF990587
+    /**
+     * 判断是否为ARGB格式的十六进制颜色，例如：FF990587
+     * @param string String
+     * @return boolean
+     */
     public static boolean judgeColorString(String string) {
         if (string.length() == 8) {
             for (int i = 0; i < string.length(); i++) {
@@ -28,7 +32,12 @@ public class GodUtils {
         return false;
     }
 
-    //颜色加深，可调度数：0~255
+    /**
+     * 颜色加深
+     * @param argbColor ARGB颜色值
+     * @param darkValue 0-255 加深范围
+     * @return
+     */
     public static int TranslateDark(String argbColor, int darkValue) {
         int startAlpha = Integer.parseInt(argbColor.substring(0, 2), 16);
         int startRed = Integer.parseInt(argbColor.substring(2, 4), 16);
@@ -43,7 +52,12 @@ public class GodUtils {
         return Color.argb(startAlpha, startRed, startGreen, startBlue);
     }
 
-    //颜色加深，可调度数：0~255
+    /**
+     * 颜色加深
+     * @param colorInt ARGB颜色值
+     * @param darkValue 0~255 加深范围
+     * @return
+     */
     public static int TranslateDark(int colorInt, int darkValue) {
         String argbColor = intToString(colorInt);
         int startAlpha = Integer.parseInt(argbColor.substring(0, 2), 16);
