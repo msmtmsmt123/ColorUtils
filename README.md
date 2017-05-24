@@ -1,4 +1,8 @@
 # ColorUtils
+![version：1.0.0](https://img.shields.io/badge/version%20-1.0.0-brightgreen.svg)
+![API：15+](https://img.shields.io/badge/API-15%2B-brightgreen.svg)
+![QQ：779754469](https://img.shields.io/badge/QQ-779754469-red.svg) 
+
 Android中的颜色工具，可以实现颜色变化，颜色透明度变化，颜色格式转换，颜色格式判断等。
 
 ## 注意
