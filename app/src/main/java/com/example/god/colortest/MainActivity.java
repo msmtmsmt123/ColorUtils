@@ -2,35 +2,44 @@ package com.example.god.colortest;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.colorutils.GodUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView colorShow;
+    private RelativeLayout colorShow;
     private int backColor;
     private EditText colorText;
     private boolean changed = false;
     private Button sureButton;
     private int saveColor;
+    private Toolbar toolbar;
+    private Button add;
+    private Button del;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar = (Toolbar)findViewById(R.id.tooblar);
+        toolbar.setTitleTextColor(GodUtils.StringTransInt("ffffffff"));
+        setSupportActionBar(toolbar);
         sureButton = (Button) findViewById(R.id.sureColor);
-        Button add = (Button) findViewById(R.id.add);
-        Button del = (Button) findViewById(R.id.del);
+        add = (Button) findViewById(R.id.add);
+        del = (Button) findViewById(R.id.del);
         colorText = (EditText) findViewById(R.id.colorText);
-        colorShow = (TextView) findViewById(R.id.colorShow);
+        colorShow = (RelativeLayout) findViewById(R.id.rootLayout);
+
 
         colorText.setText("ff009587");
         backColor = GodUtils.StringTransInt(colorText.getText().toString());
+        toolbar.setBackgroundColor(GodUtils.TranslateDark(backColor,30));
         colorShow.setBackgroundColor(backColor);
 
         sureButton.setOnClickListener(this);
@@ -77,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         backColor = color;
         colorText.setText(GodUtils.intToString(backColor));
         colorShow.setBackgroundColor(backColor);
+        toolbar.setBackgroundColor(GodUtils.TranslateDark(color,30));
+        add.setBackgroundColor(GodUtils.TranslateLight(color,30));
+        del.setBackgroundColor(GodUtils.TranslateLight(color,30));
+        sureButton.setBackgroundColor(GodUtils.TranslateLight(color,30));
     }
 
 }
