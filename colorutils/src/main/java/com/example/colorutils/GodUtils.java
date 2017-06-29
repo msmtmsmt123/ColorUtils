@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -163,8 +162,6 @@ public class GodUtils {
     }
 
 
-
-
     //将16进制颜色（String）转化为10进制（Int）
     public static int StringTransInt(String color) {
         int startAlpha = Integer.parseInt(color.substring(0, 2), 16);
@@ -175,7 +172,7 @@ public class GodUtils {
     }
 
     //将10进制颜色（int）值转换成16进制(String)
-    private static String intToString(int value) {
+    public static String intToString(int value) {
         String hexString = Integer.toHexString(value);
         if (hexString.length() == 1) {
             hexString = "0" + hexString;
@@ -191,17 +188,6 @@ public class GodUtils {
     //将16进制颜色（String）转化为Drawable对象
     public static Drawable stringToDrawable(String color) {
         return new ColorDrawable(StringTransInt(color));
-    }
-
-
-    //判断是否翻页，如果页数为最后一页，则重新开始
-    public static int JudgePage(int Page, int PageNum) {
-        if (Page == PageNum) {
-            Page = 1;
-        } else {
-            Page += 1;
-        }
-        return Page;
     }
 
     //截屏
@@ -233,24 +219,6 @@ public class GodUtils {
                 }, time);
             }
         });
-    }
-
-    public static void delNum(TextView edit, int min, int val) {
-        Integer cum = Integer.valueOf(edit.getText().toString());
-        if (cum > min) {
-            edit.setText(String.valueOf(cum -= val));
-        } else {
-            edit.setText(String.valueOf(min));
-        }
-    }
-
-    public static void addNum(TextView edit, int max, int val) {
-        Integer cum = Integer.valueOf(edit.getText().toString());
-        if (cum < max) {
-            edit.setText(String.valueOf(cum += val));
-        } else {
-            edit.setText(String.valueOf(max));
-        }
     }
 
 }
