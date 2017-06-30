@@ -5,8 +5,8 @@
 
 Android中的颜色工具，可以实现颜色变化，颜色透明度变化，颜色格式转换，颜色格式判断等。
 
-## 颜色变化效果示例
-![示例](http://oqg7nynni.bkt.clouddn.com/simple.gif) 
+## 效果展示（根据输入颜色值实现主题颜色的更换）
+![示例](http://oqg7nynni.bkt.clouddn.com/GIF.gif) 
 
 ## 注意
 - Android下的颜色为16进制的ARGB（Alpha，Red，Green，Blue），如：“#ff00ab87”

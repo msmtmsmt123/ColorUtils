@@ -93,9 +93,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainLinear.setBackgroundColor(backColor);
         colorShow.setBackgroundColor(GodUtils.TranslateDark(color,60));
         toolbar.setBackgroundColor(GodUtils.TranslateDark(color,30));
-        add.setBackgroundColor(GodUtils.TranslateLight(color,30));
-        del.setBackgroundColor(GodUtils.TranslateLight(color,30));
-        sureButton.setBackgroundColor(GodUtils.TranslateLight(color,30));
     }
 
     public void hideInputWindow(Activity context) {
