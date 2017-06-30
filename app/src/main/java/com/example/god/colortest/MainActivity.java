@@ -1,11 +1,14 @@
 package com.example.god.colortest;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Toolbar toolbar;
     private Button add;
     private Button del;
+    private LinearLayout mainLinear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +39,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         del = (Button) findViewById(R.id.del);
         colorText = (EditText) findViewById(R.id.colorText);
         colorShow = (RelativeLayout) findViewById(R.id.rootLayout);
+        mainLinear = (LinearLayout)findViewById(R.id.mainLayout);
 
 
         colorText.setText("ff009587");
         backColor = GodUtils.StringTransInt(colorText.getText().toString());
-        toolbar.setBackgroundColor(GodUtils.TranslateDark(backColor,30));
-        colorShow.setBackgroundColor(backColor);
+        setColor(backColor);
 
         sureButton.setOnClickListener(this);
         add.setOnClickListener(this);
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sureColor:
+                hideInputWindow(this);
                 if (changed) {
                     setColor(saveColor);
                     changed = false;
@@ -85,11 +90,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setColor(int color){
         backColor = color;
         colorText.setText(GodUtils.intToString(backColor));
-        colorShow.setBackgroundColor(backColor);
+        mainLinear.setBackgroundColor(backColor);
+        colorShow.setBackgroundColor(GodUtils.TranslateDark(color,60));
         toolbar.setBackgroundColor(GodUtils.TranslateDark(color,30));
         add.setBackgroundColor(GodUtils.TranslateLight(color,30));
         del.setBackgroundColor(GodUtils.TranslateLight(color,30));
         sureButton.setBackgroundColor(GodUtils.TranslateLight(color,30));
+    }
+
+    public void hideInputWindow(Activity context) {
+        if (context == null) {
+            return;
+        }
+        final View v = context.getWindow().peekDecorView();
+        if (v != null && v.getWindowToken() != null) {
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
     }
 
 }
